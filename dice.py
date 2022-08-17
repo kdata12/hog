@@ -55,6 +55,4 @@ def make_test_dice(*outcomes):
         return outcomes[index]
     return dice
 
-dice = make_test_dice(1,2,3)
-
 

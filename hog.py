@@ -22,22 +22,22 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
-    total = 0
-    count = 0
+    sum = 0
+    num = 0
+    i = 0
     pigged_out = False
-
-    while num_rolls > count:
+    while num_rolls > i:
         num = dice()
-        count += 1
-
-        if not pigged_out:
-            if num == 1:
-                total, pigged_out = 1, True
-            else:
-                total = total + num
         
-        return total
-
+        if num == 1:
+            pigged_out = True
+        else:
+            sum = sum + num        
+        i += 1
+    if pigged_out:
+        return 1
+    else:
+        return sum
     # END PROBLEM 1
 
 def picky_piggy(score):
