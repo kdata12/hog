@@ -22,7 +22,7 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
-    return "testing on macbook"
+    return "testing on pc"
     # END PROBLEM 1
 
 
