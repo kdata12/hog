@@ -31,7 +31,6 @@ six_sided = make_fair_dice(6)
 
 def make_test_dice(*outcomes):
     """Return a die that cycles deterministically through OUTCOMES.
-
     >>> dice = make_test_dice(1, 2, 3)
     >>> dice()
     1
@@ -43,7 +42,6 @@ def make_test_dice(*outcomes):
     1
     >>> dice()
     2
-
     This function uses Python syntax/techniques not yet covered in this course.
     The best way to understand it is by reading the documentation and examples.
     """
@@ -51,9 +49,12 @@ def make_test_dice(*outcomes):
     for o in outcomes:
         assert type(o) == int and o >= 1, 'Outcome is not a positive integer'
     index = len(outcomes) - 1
-
     def dice():
         nonlocal index
         index = (index + 1) % len(outcomes)
         return outcomes[index]
     return dice
+
+dice = make_test_dice(1,2,3)
+
+

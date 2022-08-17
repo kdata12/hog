@@ -1,6 +1,6 @@
 """CS 61A Presents The Game of Hog."""
 
-from dice import six_sided, four_sided, make_test_dice
+from dice import make_fair_dice, six_sided, four_sided, make_test_dice
 from ucb import main, trace, interact
 
 GOAL_SCORE = 100  # The goal of Hog is to score 100 points.
@@ -22,9 +22,23 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
-    return "testing on pc"
-    # END PROBLEM 1
+    total = 0
+    count = 0
+    pigged_out = False
 
+    while num_rolls > count:
+        num = dice()
+        count += 1
+
+        if not pigged_out:
+            if num == 1:
+                total, pigged_out = 1, True
+            else:
+                total = total + num
+        
+        return total
+
+    # END PROBLEM 1
 
 def picky_piggy(score):
     """Return the points scored from rolling 0 dice.
