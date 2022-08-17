@@ -1,5 +1,6 @@
 """CS 61A Presents The Game of Hog."""
 
+from decimal import Decimal
 from dice import make_fair_dice, six_sided, four_sided, make_test_dice
 from ucb import main, trace, interact
 
@@ -46,8 +47,21 @@ def picky_piggy(score):
     score:  The opponent's current score.
     """
     # BEGIN PROBLEM 2
-    "*** YOUR CODE HERE ***"
+    i = 0
+    g, multiplier  = Decimal(1 / 7) * 10, 10
+    num = 0
+    k = 0
+    if score == 0:
+        return 7
+    while score != i:
+        (num) = g
+        k = num // 1
+        g = (num - k) * multiplier
+        i += 1
+    return int(k)
     # END PROBLEM 2
+
+print(picky_piggy(24))
 
 
 def take_turn(num_rolls, opponent_score, dice=six_sided, goal=GOAL_SCORE):
