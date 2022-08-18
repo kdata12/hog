@@ -80,9 +80,11 @@ def take_turn(num_rolls, opponent_score, dice=six_sided, goal=GOAL_SCORE):
     assert opponent_score < goal, 'The game should be over.'
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
-    
+    if num_rolls > 0:
+        return roll_dice(num_rolls, dice)
+    if num_rolls == 0:
+        return picky_piggy(opponent_score)
     # END PROBLEM 3
-
 
 def hog_pile(player_score, opponent_score):
     """Return the points scored by player due to Hog Pile.
@@ -92,8 +94,11 @@ def hog_pile(player_score, opponent_score):
     """
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    if (player_score == opponent_score):
+        return player_score
+    else:
+        return 0
     # END PROBLEM 4
-
 
 def next_player(who):
     """Return the other player, for a player WHO numbered 0 or 1.
@@ -131,13 +136,18 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+
+
     # END PROBLEM 5
     # (note that the indentation for the problem 6 prompt (***YOUR CODE HERE***) might be misleading)
     # BEGIN PROBLEM 6
     "*** YOUR CODE HERE ***"
     # END PROBLEM 6
     return score0, score1
+always_three = make_test_dice(3)
 
+
+print(always_three)
 
 #######################
 # Phase 2: Commentary #
