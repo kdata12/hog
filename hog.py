@@ -136,18 +136,30 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
     who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    while score0 < goal and score1 < goal:
 
+        if who == 0:
+            num_dice = strategy0(score0, score1)
+            turn_score = take_turn(num_dice, score1, dice, goal)
+            score0 += turn_score
+            score0 += hog_pile(score0, score1)
+
+
+        else:
+            num_dice = strategy1(score1, score0)
+            turn_score = take_turn(num_dice, score0, dice, goal)
+            score1 += turn_score
+            score1 += hog_pile(score1, score0)
+        
+        who = next_player(who)
 
     # END PROBLEM 5
     # (note that the indentation for the problem 6 prompt (***YOUR CODE HERE***) might be misleading)
     # BEGIN PROBLEM 6
-    "*** YOUR CODE HERE ***"
+        say = say(score0, score1)
     # END PROBLEM 6
     return score0, score1
-always_three = make_test_dice(3)
 
-
-print(always_three)
 
 #######################
 # Phase 2: Commentary #
