@@ -286,8 +286,20 @@ def make_averaged(original_function, trials_count=1000):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    def average_function(*args):
+        i = 0
+        sum = 0
+        while i != trials_count:
+            results = original_function(*args)
+            sum += results
+            i += 1
+        return sum / trials_count
+    return average_function
     # END PROBLEM 8
 
+dice = make_test_dice(3, 1, 5, 6)
+averaged_dice = make_averaged(roll_dice, 1000)
+print(averaged_dice(2, dice))
 
 def max_scoring_num_rolls(dice=six_sided, trials_count=1000):
     """Return the number of dice (1 to 10) that gives the highest average turn score
