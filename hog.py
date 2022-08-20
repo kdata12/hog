@@ -2,6 +2,7 @@
 
 from decimal import Decimal
 import math
+from unittest import result
 from dice import make_fair_dice, six_sided, four_sided, make_test_dice
 from ucb import main, trace, interact
 
@@ -297,9 +298,6 @@ def make_averaged(original_function, trials_count=1000):
     return average_function
     # END PROBLEM 8
 
-dice = make_test_dice(3, 1, 5, 6)
-averaged_dice = make_averaged(roll_dice, 1000)
-print(averaged_dice(2, dice))
 
 def max_scoring_num_rolls(dice=six_sided, trials_count=1000):
     """Return the number of dice (1 to 10) that gives the highest average turn score
@@ -312,14 +310,16 @@ def max_scoring_num_rolls(dice=six_sided, trials_count=1000):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
-    i = 0
-    while i < 10:
-        results = make_averaged(roll_dice(i, dice), trials_count)
-        
-
+    max_score = 0
+    num_rolls = 0
+    avg = make_averaged(roll_dice, trials_count)
+    for i in range(1,11):
+        score_temp = avg(i,dice)
+        if score_temp > max_score:
+            max_score, num_rolls = score_temp, i
+    return num_rolls
     # END PROBLEM 9
-
-
+    
 def winner(strategy0, strategy1):
     """Return 0 if strategy0 wins against strategy1, and 1 otherwise."""
     score0, score1 = play(strategy0, strategy1)
